@@ -1,12 +1,12 @@
 import http from 'http';
-import users from './data/users.json';
+import { getAllUsers, getUserById } from './controllers/userController';
 
 const server = http.createServer((req, res) => {
   if (req.url === '/api/users' && req.method === 'GET') {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.write(JSON.stringify(users));
-    res.end();
+    getAllUsers(req, res);
+  } else if (req.url?.match(/\/api\/users\/[0-9]+/) && req.method === 'GET') {
+    const id = req.url.split('/')[3];
+    getUserById(req, res, id);
   } else {
     res.statusCode = 404;
     res.setHeader('Content-Type', 'application/json');
