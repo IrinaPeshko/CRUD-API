@@ -1,5 +1,6 @@
-import path from "path";
-import ESLintPlugin from "eslint-webpack-plugin";
+const path = require("path");
+const ESLintPlugin = require("eslint-webpack-plugin");
+const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   entry: './src/index.ts',
@@ -9,7 +10,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js'
   },
-
   module: {
     rules: [
       {

@@ -26,7 +26,11 @@ const server = http.createServer((req, res) => {
   } else {
     res.statusCode = 404;
     res.setHeader('Content-Type', 'application/json');
-    res.write(JSON.stringify({ message: 'Invalid request' }));
+    res.write(
+      JSON.stringify({
+        message: 'The requested resource was not found on this server.',
+      }),
+    );
     res.end();
   }
 });
