@@ -29,3 +29,12 @@ export async function updateUserModel(id: string, newUserData: IUserToUpdate) {
   users[userIndex] = updateUser;
   return updateUser;
 }
+
+export async function deleteUserModel(id: string) {
+  const userIndex = users.findIndex((el) => el.id === id);
+  if (userIndex === -1) {
+    return false;
+  }
+  users.splice(userIndex, 1);
+  return true;
+}

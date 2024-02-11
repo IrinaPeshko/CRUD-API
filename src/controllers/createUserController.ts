@@ -12,7 +12,17 @@ export async function createUser(
     });
     req.on('end', async () => {
       try {
-        const { username, age, hobbies } = JSON.parse(body);
+        const userData = JSON.parse(body);
+
+        const allowedFields = ['username', 'age', 'hobbies'];
+        const fields = Object.keys(userData);
+        if (!fields.every((field) => allowedFields.includes(field))) {
+          res.statusCode = 400;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ message: 'Invalid fields in user data' }));
+          return;
+        }
+        const { username, age, hobbies } = userData;
 
         if (!username || typeof username !== 'string') {
           res.statusCode = 400;

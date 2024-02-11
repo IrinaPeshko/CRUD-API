@@ -25,6 +25,15 @@ export async function updateUser(
       try {
         const userData: IUserToUpdate = JSON.parse(body);
 
+        const allowedFields = ['username', 'age', 'hobbies'];
+        const fields = Object.keys(userData);
+        if (!fields.every((field) => allowedFields.includes(field))) {
+          res.statusCode = 400;
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({ message: 'Invalid fields in user data' }));
+          return;
+        }
+
         if (userData.username) {
           if (!userData.username || typeof userData.username !== 'string') {
             res.statusCode = 400;
