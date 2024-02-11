@@ -9,13 +9,14 @@
     "format": "prettier --write 'src/**/*.{js,ts,json,md}'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
-    "dev": "nodemon src/index.ts",
-    "start": "node src/index.ts"
+    "start:dev": "nodemon src/index.ts",
+    "start:prod": "node src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.56.0",
@@ -30,5 +31,8 @@
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4",
     "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "uuid": "^9.0.1"
   }
 }
