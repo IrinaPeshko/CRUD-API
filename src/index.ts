@@ -1,16 +1,22 @@
 import http from 'http';
 import { getAllUsers, getUserById } from './controllers/getUserController';
 import { createUser } from './controllers/createUserController';
+import 'dotenv/config';
+import { baseUrl, methods, urlWithIdRegExp } from './Constants/apiConstants';
+import { updateUser } from './controllers/updateUserController';
 
 const server = http.createServer((req, res) => {
-  if (req.url === '/api/users' && req.method === 'GET') {
+  if (req.url === baseUrl && req.method === methods.get) {
     getAllUsers(req, res);
-  } else if (req.url?.match(/\/api\/users\/[0-9]+/) && req.method === 'GET') {
+  } else if (req.url?.match(urlWithIdRegExp) && req.method === methods.get) {
     const id = req.url.split('/')[3];
-    console.log(id);
     getUserById(req, res, id);
-  } else if (req.url === '/api/users' && req.method === 'POST') {
+  } else if (req.url === baseUrl && req.method === methods.post) {
     createUser(req, res);
+    return;
+  } else if (req.url?.match(urlWithIdRegExp) && req.method === methods.put) {
+    const id = req.url.split('/')[3];
+    updateUser(req, res, id);
     return;
   } else {
     res.statusCode = 404;
@@ -19,8 +25,8 @@ const server = http.createServer((req, res) => {
     res.end();
   }
 });
-
-const PORT = process.env.PORT || 5500;
+const DEFAULT_PORT = 4000;
+const PORT = process.env.PORT || DEFAULT_PORT;
 server.listen(PORT, () => {
   `server start ${PORT}`;
 });

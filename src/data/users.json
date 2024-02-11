@@ -9,6 +9,6 @@
     "id": "5a4d291e-fe93-453a-bd63-d27638d1e24a",
     "username": "Vlad",
     "age": 23,
-    "hobbies": "boardgames"
+    "hobbies": ["boardgames"]
   }
 ]
