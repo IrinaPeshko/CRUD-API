@@ -1,6 +1,8 @@
-import users from '../data/users.json';
+import usersData from '../data/users.json';
 import { IUser, IUserToCreate, IUserToUpdate } from '../types/types';
 import { v4 as uuidv4 } from 'uuid';
+
+const users: IUser[] = usersData;
 
 export async function findAllUsers() {
   return users;

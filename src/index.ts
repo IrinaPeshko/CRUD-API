@@ -40,3 +40,5 @@ const PORT = process.env.PORT || DEFAULT_PORT;
 server.listen(PORT, () => {
   `server start ${PORT}`;
 });
+
+export default server;

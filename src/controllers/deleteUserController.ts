@@ -20,7 +20,7 @@ export async function deleteUser(
       res.statusCode = 404;
       res.setHeader('Content-Type', 'application/json');
       res.end(
-        JSON.stringify({ message: `The user with id '${userId}' not found` }),
+        JSON.stringify({ message: `The user with id: '${userId}' not found` }),
       );
       return;
     }

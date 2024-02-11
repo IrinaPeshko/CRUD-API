@@ -1,14 +1,1 @@
-[
-  {
-    "id": "6e7b1650-a9c8-4d57-a7cb-5dd199b8d650",
-    "username": "Ira",
-    "age": 24,
-    "hobbies": ["travel", "dance", "boardgames"]
-  },
-  {
-    "id": "5a4d291e-fe93-453a-bd63-d27638d1e24a",
-    "username": "Vlad",
-    "age": 23,
-    "hobbies": ["boardgames"]
-  }
-]
+[]

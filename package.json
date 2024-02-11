@@ -11,13 +11,12 @@
     "format": "prettier --write 'src/**/*.{js,ts,json,md}'",
     "test": "jest"
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/supertest": "^6.0.2",
     "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
@@ -31,6 +30,7 @@
     "nodemon": "^3.0.3",
     "prettier": "^3.2.5",
     "supertest": "^6.3.4",
+    "ts-jest": "^29.1.2",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
