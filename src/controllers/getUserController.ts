@@ -15,7 +15,7 @@ export async function getAllUsers(
   } catch (error) {
     console.error(error);
     res.statusCode = 500;
-    res.end('Internal Server Error');
+    res.end(JSON.stringify({ message: 'Invalid user data' }));
   }
 }
 
@@ -49,6 +49,6 @@ export async function getUserById(
   } catch (error) {
     console.error(error);
     res.statusCode = 500;
-    res.end('Internal Server Error');
+    res.end(JSON.stringify({ message: 'Invalid user data' }));
   }
 }
