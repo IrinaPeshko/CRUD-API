@@ -7,12 +7,13 @@ import { updateUser } from './controllers/updateUserController';
 import { deleteUser } from './controllers/deleteUserController';
 
 const server = http.createServer((req, res) => {
-  if (req.url === baseUrl && req.method === methods.get) {
+  const url = req.url?.endsWith('/') ? req.url.slice(0, -1) : req.url;
+  if (url === baseUrl && req.method === methods.get) {
     getAllUsers(req, res);
   } else if (req.url?.match(urlWithIdRegExp) && req.method === methods.get) {
     const id = req.url.split('/')[3];
     getUserById(req, res, id);
-  } else if (req.url === baseUrl && req.method === methods.post) {
+  } else if (url === baseUrl && req.method === methods.post) {
     createUser(req, res);
     return;
   } else if (req.url?.match(urlWithIdRegExp) && req.method === methods.put) {

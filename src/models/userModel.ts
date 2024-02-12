@@ -1,15 +1,13 @@
-import usersData from '../data/users.json';
+import { users_DB } from '../data/users';
 import { IUser, IUserToCreate, IUserToUpdate } from '../types/types';
 import { v4 as uuidv4 } from 'uuid';
 
-const users: IUser[] = usersData;
-
 export async function findAllUsers() {
-  return users;
+  return users_DB;
 }
 
 export async function findUserById(id: string) {
-  const user = users.find((el) => el.id === id);
+  const user = users_DB.find((el) => el.id === id);
   return user;
 }
 
@@ -18,25 +16,25 @@ export async function createUserModel(user: IUserToCreate) {
     id: uuidv4(),
     ...user,
   };
-  users.push(newUser);
+  users_DB.push(newUser);
   return newUser;
 }
 
 export async function updateUserModel(id: string, newUserData: IUserToUpdate) {
-  const userIndex = users.findIndex((el) => el.id === id);
+  const userIndex = users_DB.findIndex((el) => el.id === id);
   if (userIndex === -1) {
     return null;
   }
-  const updateUser = { ...users[userIndex], ...newUserData };
-  users[userIndex] = updateUser;
+  const updateUser = { ...users_DB[userIndex], ...newUserData };
+  users_DB[userIndex] = updateUser;
   return updateUser;
 }
 
 export async function deleteUserModel(id: string) {
-  const userIndex = users.findIndex((el) => el.id === id);
+  const userIndex = users_DB.findIndex((el) => el.id === id);
   if (userIndex === -1) {
     return false;
   }
-  users.splice(userIndex, 1);
+  users_DB.splice(userIndex, 1);
   return true;
 }
