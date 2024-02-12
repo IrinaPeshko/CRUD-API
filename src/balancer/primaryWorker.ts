@@ -5,10 +5,10 @@ import { processResponse } from '../utils/handleProcess';
 import { changeUsersDB } from '../Constants/apiConstants';
 import { IUser } from '../types/types';
 
-const numCPUs = os.cpus().length;
+const numCPUs = os.cpus().length - 1;
 export function startPrimaryWorker(PORT: number) {
   const workerPortsArray: number[] = [];
-  for (let i = 0; i < numCPUs - 1; i++) {
+  for (let i = 0; i < numCPUs; i++) {
     cluster.schedulingPolicy = cluster.SCHED_RR;
     const childWorker = cluster.fork({ workerPort: PORT + 1 + i });
     workerPortsArray.push(PORT + 1 + i);
@@ -49,6 +49,9 @@ export function startPrimaryWorker(PORT: number) {
           resToClient.end(JSON.stringify({ message: 'Internal Server Error' }));
         });
 
+        requestToWorker.on('response', (response) => {
+          resToClient.statusCode = response.statusCode!;
+        });
         req.pipe(requestToWorker);
       } catch (error) {
         console.error(error);
