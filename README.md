@@ -6,11 +6,6 @@ This repository houses a Node.js project focused on delivering a CRUD API. It ut
 
 ## Setup Guide
 
-### Prerequisites
-
-- Node.js (20 LTS version)
-- Basic understanding of JavaScript or TypeScript
-
 ### Steps to Install
 
 1. **Clone the Project**: 
@@ -34,8 +29,8 @@ This repository houses a Node.js project focused on delivering a CRUD API. It ut
 ##### For development:
     npm run start:dev
 
-##### For development:
-    npm run start:dev
+##### For production:
+    npm run start:prod
 
 6. **Running Tests**: 
 Execute the following command to run predefined test scenarios:
@@ -64,10 +59,6 @@ Execute the following command to run predefined test scenarios:
 - 400: Bad Request (Invalid input, e.g., non-UUID userId)
 - 404: Not Found (User not found)
 - 500: Internal Server Error
-
-## Clustering Setup
-
-This project uses Node.js Cluster API for load balancing. When running `npm run start:multi`, multiple instances are created, with each instance handling a portion of the incoming requests.
 
 ## Contribution
 
